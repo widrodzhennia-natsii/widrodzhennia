@@ -16,7 +16,7 @@ jobs:
 
       - name: Push to Public Org Repo
         env:
-          PUBLIC_TOKEN: ${{ secrets.PUBLIC_ORG_TOKEN }}
+          PUBLIC_TOKEN: ${{ secrets.PUBLIC_ORG_TOKEN1 }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
