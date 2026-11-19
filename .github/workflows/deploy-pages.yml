@@ -19,6 +19,8 @@ concurrency:
 
 jobs:
   deploy:
+    # На безкоштовному тарифі GitHub Pages недоступний у приватних репо, тому авто-деплой запускається у публічному репо (або вручну через workflow_dispatch)
+    if: github.event.repository.private == false || github.event_name == 'workflow_dispatch'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -37,10 +39,20 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Build static site
-        run: npm run build
+        run: |
+          BASE_PATH="${{ steps.pages.outputs.base_path }}"
+          if [ -z "$BASE_PATH" ] || [ "$BASE_PATH" = "/" ]; then
+            VITE_BASE="/"
+          else
+            VITE_BASE="${BASE_PATH%/}/"
+          fi
+          npx vite build --base="$VITE_BASE"
 
       - name: Prepare GitHub Pages fallbacks (.nojekyll & 404.html)
         run: |

@@ -8,7 +8,7 @@ on:
 
 jobs:
   sync:
-    if: github.repository != 'widrodzhennia-natsii/widrodzhenia'
+    if: github.repository != 'widrodzhennia-natsii/widrodzhennia'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Private Repo
@@ -33,6 +33,6 @@ jobs:
           git config --unset-all http.https://github.com/.extraheader || true
 
           git remote remove public-org 2>/dev/null || true
-          git remote add public-org "https://x-access-token:${PUBLIC_TOKEN}@github.com/widrodzhennia-natsii/widrodzhenia.git"
+          git remote add public-org "https://x-access-token:${PUBLIC_TOKEN}@github.com/widrodzhennia-natsii/widrodzhennia.git"
 
           git push public-org "HEAD:refs/heads/main" --force
