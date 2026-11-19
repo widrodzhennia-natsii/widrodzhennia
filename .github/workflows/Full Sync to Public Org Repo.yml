@@ -1,4 +1,4 @@
-name: Full Sync to Public Org Repo
+name: Full Sync to Public Org Repo1
 
 on:
   push:
