@@ -4,24 +4,35 @@ on:
   push:
     branches:
       - main # або master
+  workflow_dispatch:
 
 jobs:
   sync:
+    if: github.repository != 'widrodzhennia-natsii/widrodzhenia'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Private Repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Push to Public Org Repo
         env:
           PUBLIC_TOKEN: ${{ secrets.PUBLIC_ORG_TOKEN1 }}
         run: |
+          if [ -z "$PUBLIC_TOKEN" ]; then
+            echo "::error::Secret PUBLIC_ORG_TOKEN1 is empty or missing in this repository's Actions secrets."
+            exit 1
+          fi
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Оновлений URL з вашими параметрами:
-          git remote add public-org https://x-access-token:${PUBLIC_TOKEN}@github.com/widrodzhennia-natsii/widrodzhenia.git
-          
-          git push public-org main --force
+
+          # Гарантовано очищаємо можливий extraheader від GITHUB_TOKEN, щоб Git використовував PUBLIC_TOKEN
+          git config --unset-all http.https://github.com/.extraheader || true
+
+          git remote remove public-org 2>/dev/null || true
+          git remote add public-org "https://x-access-token:${PUBLIC_TOKEN}@github.com/widrodzhennia-natsii/widrodzhenia.git"
+
+          git push public-org "HEAD:refs/heads/main" --force
