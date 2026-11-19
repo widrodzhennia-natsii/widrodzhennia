@@ -1,0 +1,97 @@
+id: "01-forces-and-circuits"
+title: "Сили, важелі та просте електричне коло"
+subjectId: "physics"
+gradeId: "grade-05"
+description: "Інтерактивні досліди з векторами сил, важільними терезами, кутами запуску та законом Ома."
+speaker: "Фізик Левко"
+speakerAvatar: "🔬"
+islandStageName: "Механічна майстерня"
+
+blocks:
+  - id: "phys-01-dialogue"
+    type: "block_dialogue"
+    speaker: "Фізик Левко"
+    avatar: "🔬"
+    emote: "idea"
+    text: "Фізика починається з досліду! Пограйтеся зі схемами сил, терезами та колом, щоб відчути закони природи."
+
+  - id: "phys-02-theory"
+    type: "block_theory_rule"
+    title: "Рівнодійна сил, важіль та електричне коло"
+    ruleSummary: |
+      Коли на тіло діють дві протилежні сили, їхня рівнодійна дорівнює різниці модулів, спрямованій у бік більшої сили:
+      {{vectors:f1=16;f2=7;dir="opposite"}}
+
+      Важіль перебуває у рівновазі, коли навантаження лівої і правої шальок зрівнялися:
+      {{balance:leftVal=12;rightVal=12;leftExpr="6 + 6";rightExpr="12"}}
+
+      Кут запуску тіла та сила струму в колі (спробуйте перемкнути ключ і змінити напругу):
+      {{angle:deg=45}} {{circuit:voltage=12;resistance=4;closed=1}}
+
+      {{formula:expr="I = U / R";legend="I — струм (А); U — напруга (В); R — опір (Ом)"}}
+    formulaText: "R = |F₁ − F₂| (протилежні)   |   I = U / R"
+    stepByStepBreakdown:
+      - "Співнапрямлені сили додаються, а протилежні — віднімаються."
+      - "У замкненому колі сила струму прямо пропорційна напрузі та обернено пропорційна опору."
+    copilotHint: "Відкрийте повзунки на схемі кола та векторах, щоб простежити зміну величин у реальному часі."
+
+  - id: "phys-03-vars-task"
+    type: "block_notebook_task"
+    title: "Розрахунок сили струму в лампочці"
+    vars:
+      amperes: "randInt(2, 6)"
+      resOhm: "randInt(2, 5)"
+      voltU: "amperes * resOhm"
+    notebookPrompt: |
+      Напруга на затискачах батареї становить **U = {{voltU}} В**, а опір нитки лампочки — **R = {{resOhm}} Ом**.
+
+      Обчисліть силу струму **I** (в амперах) у замкнутому колі за законом Ома `I = U / R`:
+    unit: "А"
+    correctAnswer: "{{amperes}}"
+    hint: "Поділіть напругу {{voltU}} В на опір {{resOhm}} Ом."
+    copilotHint: "Перевірте: сила струму помножена на опір має знову дати напругу {{voltU}} В."
+
+  - id: "phys-04-sandbox"
+    type: "block_interactive_sandbox"
+    engineId: "ballistic-trajectory"
+    title: "Лабораторія балістичного кута"
+    instruction: "Доберіть кут запуску та початкову швидкість без вітру, щоб уразити датчик на відстані 320 м."
+    reactionZones:
+      - condition: "hit"
+        speaker: "Фізик Левко"
+        avatar: "🔬"
+        emote: "joy"
+        text: "Ідеальна траєкторія! Датчик зафіксував точне попадання."
+      - condition: "near_miss"
+        speaker: "Фізик Левко"
+        avatar: "🔬"
+        emote: "idea"
+        text: "Похибка зовсім мала — змініть швидкість лише на 2–4 м/с."
+      - condition: "undershoot"
+        speaker: "Фізик Левко"
+        avatar: "🔬"
+        emote: "sweat"
+        text: "Траєкторія закоротка. За фіксованого кута дальність зростає зі збільшенням швидкості."
+      - condition: "overshoot"
+        speaker: "Фізик Левко"
+        avatar: "🔬"
+        emote: "question"
+        text: "Занадто велика кінетична енергія — зменште початкову швидкість."
+    engineConfig:
+      title: "Випробування дальності польоту"
+      instruction: "Уразите мішень датчика на позначці 320 м за відсутності вітру (g = 9.81 м/с²)."
+      themePreset: "laboratory"
+      launcherLabel: "Катапульта"
+      targetLabel: "Датчик 320 м"
+      gravity: 9.81
+      windSpeedMs: 0
+      airDragCoeff: 0
+      toleranceMeters: 30
+      initialAngle: 45
+      initialPower: 48
+      targets:
+        - id: 1
+          distanceMeters: 320
+          label: "Ціль (320 м)"
+      successMessage: "Експеримент вдався! Траєкторія розрахована точно."
+      failureMessage: "Снаряд не влучив у датчик. Проаналізуйте недоліт або переліт."

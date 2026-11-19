@@ -1,0 +1,24 @@
+characters:
+  - id: "otaman"
+    name: "Отаман Дмитро"
+    avatarSvg: "./assets/avatars/otaman.svg"
+    voice:
+      preset: "bass_warm"
+      baseFrequency: 115
+      jitter: 0.05
+
+  - id: "taras"
+    name: "Джура Тарас"
+    avatarSvg: "./assets/avatars/taras.svg"
+    voice:
+      preset: "tenor_energetic"
+      baseFrequency: 420
+      jitter: 0.11
+
+  - id: "orlyk"
+    name: "Сокіл-Орлик"
+    avatarSvg: "./assets/avatars/orlyk.svg"
+    voice:
+      preset: "robot_blip"
+      baseFrequency: 210
+      jitter: 0.03

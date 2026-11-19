@@ -1,0 +1,22 @@
+characters:
+  - id: "vyshnevetskyi"
+    name: "Дмитро Вишневецький (Байда)"
+    emoji: "⚔️"
+    voice:
+      basePitch: 120
+      speedMs: 60
+      waveform: "sawtooth"
+  - id: "dzhura-taras"
+    name: "Джура Тарас"
+    emoji: "🏹"
+    voice:
+      basePitch: 195
+      speedMs: 52
+      waveform: "triangle"
+  - id: "sokil-orlyk"
+    name: "Сокіл-Орлик"
+    emoji: "🦅"
+    voice:
+      basePitch: 290
+      speedMs: 42
+      waveform: "sine"

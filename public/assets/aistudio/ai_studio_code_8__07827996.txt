@@ -1,0 +1,13 @@
+id: "blueprint-timber-gate"
+title: "В'їзна Брама Хортицького городка"
+totalSpanMeters: 12.0
+
+geometry:
+  gatePassageWidthCm: 480      # Проліт у просвіті для проїзду воза
+  leftStonePylonWidthCm: 160   # Ширина лівого опорного стовпа
+  rightStonePylonWidthCm: 160  # Ширина правого опорного стовпа
+  minSupportOverlapCm: 30      # Обов'язковий напуск на кожну сторону
+
+materials:
+  logType: "дуб"
+  requiredBeamLengthCm: 540    # 480 + 30 + 30

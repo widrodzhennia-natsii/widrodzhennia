@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Навчальний Простір — Інтерактивна Освітня Платформа (1–12 класи)</title>
+    <meta name="description" content="Модульна інтерактивна освітня платформа за програмою НУШ для 1–12 класів: підручники, сюжетні уроки, інтерактивні STEM-рушії та імпорт навчальних матеріалів." />
+    <meta property="og:title" content="Навчальний Простір — Інтерактивна Освітня Платформа" />
+    <meta property="og:description" content="Навчальні курси для 1–12 класів, інтерактивні симулятори та візуальні сценарії уроків." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="theme-cream">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('nush_theme_v1') || 'cream';
+          if (saved === 'paper') saved = 'cream';
+          var allowed = ['cream', 'sage', 'nordic', 'lavender', 'focus', 'cozy', 'mono-light', 'mono-dark'];
+          var mode = allowed.indexOf(saved) !== -1 ? saved : 'cream';
+          document.body.className = 'theme-' + mode;
+          document.documentElement.setAttribute('data-theme', mode);
+          if (mode === 'focus' || mode === 'cozy' || mode === 'mono-dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

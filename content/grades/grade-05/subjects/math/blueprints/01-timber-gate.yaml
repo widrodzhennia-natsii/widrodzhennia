@@ -1,0 +1,18 @@
+id: "timber-gate"
+title: "Креслення Захисної Брами (5 клас)"
+subjectId: "math"
+gradeId: "grade-05"
+totalSpanMeters: 5.4
+geometry:
+  totalWidthCm: 480
+  doorLeftWidthCm: 160
+  doorRightWidthCm: 160
+  beamThicknessCm: 30
+  archHeightCm: 540
+materials:
+  beamsRequired: 15
+  planksRequired: 40
+hints:
+  - "Обчисліть ширину проходу: сума ширин лівої та правої половинок брами."
+  - "Перевірте зазори між несучими стовпами брами."
+description: "Технічне креслення дерев'яної брами для розрахунку параметрів геометрії та периметра прямокутних елементів."

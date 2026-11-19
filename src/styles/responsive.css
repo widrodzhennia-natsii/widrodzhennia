@@ -1,0 +1,120 @@
+/* Centralized Responsive Rules (Fluid clamp/auto-fit + Compact Mobile Header & Thumb Zone) */
+
+@media (min-width: 768px) {
+  .main-container {
+    padding-bottom: clamp(20px, 3vw, 32px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .two-zone-layout {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .modal-content {
+    padding: clamp(12px, 4vw, 18px);
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* Ultra-compact mobile top bar (~36-40px) so learning card dominates screen */
+  .app-header-bar {
+    min-height: 38px;
+    padding: 4px 8px;
+    gap: 6px;
+  }
+
+  .header-brand-btn {
+    font-size: 0.85rem;
+    padding: 2px 4px;
+  }
+
+  .header-resource-pill {
+    padding: 2px 6px;
+    font-size: 0.7rem;
+  }
+
+  .card {
+    padding: clamp(12px, 3.5vw, 18px);
+  }
+}
+
+/* ==========================================================================
+   STAGE 2: TEXT LENS HIGHLIGHTS & @media print CLEAN A4 MONOCHROME SHEET
+   ========================================================================== */
+
+.lens-hl {
+  border-radius: 3px;
+  padding: 0 3px;
+  font-weight: 800;
+}
+
+.lens-hl-numbers {
+  background-color: var(--hl-bg);
+  color: var(--hl-text);
+  border-bottom: 2px solid var(--hl-border);
+  font-variant-numeric: tabular-nums;
+}
+
+.lens-hl-facts {
+  background-color: var(--hl-bg);
+  color: var(--hl-text);
+  border-bottom: 2px dotted var(--accent);
+}
+
+.lens-hl-causes {
+  background-color: var(--ok-bg);
+  color: var(--ok-text);
+  border-bottom: 2px dashed var(--ok-border);
+}
+
+.lens-hl-rules {
+  background-color: var(--surface-alt);
+  color: var(--primary-dark);
+  border: 1px solid var(--accent);
+}
+
+@media print {
+  * {
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .sticky-top-chrome,
+  .bottom-dock,
+  .no-print,
+  button,
+  .density-toolbar,
+  .mobile-micro-anchor {
+    display: none !important;
+  }
+
+  body,
+  .main-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .a4-print-sheet {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+

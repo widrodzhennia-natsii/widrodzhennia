@@ -1,0 +1,55 @@
+id: "math-05-khortytsia"
+title: "Математична експедиція: Фортеця на Хортиці 1557"
+subject: "math"
+grade: 5
+standard: "НУШ-2023"
+version: "1.0.0"
+
+# Ростер персонажів із налаштуваннями формантного тембру
+roster:
+  - id: "otaman"
+    name: "Отаман Дмитро"
+    avatar: "./assets/avatars/otaman.svg"
+    voicePreset: "bass_warm"
+    baseFreq: 115
+  - id: "taras"
+    name: "Джура Тарас"
+    avatar: "./assets/avatars/taras.svg"
+    voicePreset: "tenor_energetic"
+    baseFreq: 420
+  - id: "orlyk"
+    name: "Сокіл-Орлик"
+    avatar: "./assets/avatars/orlyk.svg"
+    voicePreset: "robot_blip"
+    baseFreq: 210
+
+# Топологія першої теми: Стовбур (Spine) та бічні дослідницькі галявини (Branches)
+mapTopology:
+  spine:
+    - id: "node-01-place-values"
+      title: "1. Облік припасів та лісу"
+      topicCode: "NUM-05-01"
+      lessonFile: "./lessons/lesson-01-place-values.yaml"
+      branches:
+        - id: "node-01-bonus-fish"
+          title: "Рибальські ваги (Практика)"
+          lessonFile: "./lessons/extra-fish-counting.yaml"
+          icon: "🐟"
+
+    - id: "node-02-comparison"
+      title: "2. Фарватер порогів: Порівняння"
+      topicCode: "NUM-05-02"
+      lessonFile: "./lessons/lesson-02-comparison.yaml"
+      branches:
+        - id: "node-02-bonus-herbs"
+          title: "Цілющий чай (Запас трав)"
+          lessonFile: "./lessons/extra-herbs.yaml"
+          icon: "🍵"
+
+    - id: "node-03-milestone-gate"
+      title: "3. Кульмінація: Зведення Захисної Брами"
+      topicCode: "NUM-05-03"
+      lessonFile: "./lessons/lesson-03-milestone-gate.yaml"
+      blueprintRef: "./blueprints/timber-gate.blueprint.yaml"
+      milestone: true
+      icon: "🏰"

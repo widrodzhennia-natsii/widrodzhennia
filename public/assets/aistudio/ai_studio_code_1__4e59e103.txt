@@ -1,0 +1,14 @@
+id: "timber-gate"
+title: "В'їзна брама Хортицького городка (1557)"
+totalSpanMeters: 12.0
+
+geometry:
+  gateWidthCm: 480          # Ширина проїзду для воза
+  pylonsWidthCm: 160        # Ширина кам'яних устоїв з обох боків
+  logDiameterCm: 24         # Діаметр кожної модринової колоди
+  minSupportOverlapCm: 30   # Безпечний напуск перемички на стійку
+
+requirements:
+  stagePillarsLogsCount: 40
+  stageBeamsTotalLengthCm: 540
+  stageRoofPlanks: 250

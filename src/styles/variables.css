@@ -1,0 +1,723 @@
+/* ==========================================================================
+   GLOBAL CSS THEME SYSTEM (8 WCAG AA/AAA PALETTES, 0% HARDCODED UI COLORS)
+   ========================================================================== */
+
+/* 1. Тепла книга (Крем / Сепія — типова палітра за замовчуванням) */
+:root,
+body.theme-cream,
+[data-theme="cream"] {
+  /* Core Prompt Tokens */
+  --bg: #efe9dc;
+  --surface: #faf7f0;
+  --surface-alt: #e6dfd0;
+  --border: #cfc4ae;
+  --text: #2a2118;
+  --text-muted: #655746;
+  --accent: #8c4a1c;
+  --accent-text: #faf7f0;
+  --hl-bg: #fbf1da;
+  --hl-border: #b87324;
+  --hl-text: #6e3b10;
+  --ok-bg: #e7f2e8;
+  --ok-border: #2e7346;
+  --ok-text: #1d512f;
+
+  /* Extended Theme Surfaces & Interaction Tokens */
+  --bg-gradient: linear-gradient(165deg, #f3ede0 0%, #efe9dc 55%, #e8e0cf 100%);
+  --surface-hover: #efe8d8;
+  --border-hover: #a99b80;
+  --primary: #7a4118;
+  --primary-light: #965323;
+  --primary-dark: #572b0c;
+  --accent-hover: #703913;
+  --accent-light: #f6ead4;
+  --notebook-bg: #fcf9f2;
+  --notebook-line: #dfd5c2;
+
+  /* Semantic Status & Modals */
+  --warn-bg: #fbf0d9;
+  --warn-border: #c98b34;
+  --warn-text: #66420e;
+  --err-bg: #fae9e7;
+  --err-border: #cc6d67;
+  --err-text: #7d1f1a;
+  --modal-scrim: rgba(42, 33, 24, 0.36);
+
+  /* Code / Tag Block Tokens */
+  --code-bg: #ede6d6;
+  --code-header: #e2d9c6;
+  --code-border: #c8bca4;
+  --code-text: #382a1b;
+
+  /* Humanities Semantic & Syntax Tokens */
+  --sem-subj: #1e4e79;
+  --sem-pred: #1d6442;
+  --sem-attr: #693b88;
+  --sem-obj: #965214;
+  --sem-adv: #17656b;
+  --sem-quote-bg: #f4eee1;
+  --sem-quote-border: #8c4a1c;
+  --sem-quote-text: #3b2a19;
+  --sem-thesis-bg: #ebf2ec;
+  --sem-thesis-border: #2e7346;
+  --sem-thesis-text: #1b482b;
+  --sem-warn-bg: #faf0dc;
+  --sem-warn-border: #b87324;
+  --sem-warn-text: #62390f;
+
+  /* Independent Work (Calm Theme-Harmonized) & Subject Surfaces */
+  --boss-bg: #f4ede0;
+  --boss-border: #a87b4f;
+  --boss-accent: #572b0c;
+  --math-bg: #eaf2ed;
+  --math-border: #8fb89f;
+  --history-bg: #ecf0f7;
+  --history-border: #9eb3d6;
+  --science-bg: #edf4e7;
+  --science-border: #a3c489;
+  --ukrainian-bg: #f8f1e1;
+  --ukrainian-border: #d4b678;
+  --physics-bg: #eaf1f7;
+  --physics-border: #94b6d4;
+  --informatics-bg: #eeedf7;
+  --informatics-border: #a7a3d4;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(42, 33, 24, 0.06);
+  --shadow-card: 0 10px 28px rgba(42, 33, 24, 0.08);
+  --shadow-modal: 0 20px 48px rgba(42, 33, 24, 0.16);
+  --shadow-btn: 0 4px 12px rgba(42, 33, 24, 0.16);
+
+  /* Typography, Radii & Transitions */
+  --font-family-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'IBM Plex Mono', monospace;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Legacy Alias Map (--color-* mapped 100% to Global Theme Tokens) */
+  --color-bg: var(--bg);
+  --color-bg-gradient: var(--bg-gradient);
+  --color-surface: var(--surface);
+  --color-surface-subtle: var(--surface-alt);
+  --color-surface-hover: var(--surface-hover);
+  --color-primary: var(--accent);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-notebook-bg: var(--notebook-bg);
+  --color-notebook-line: var(--notebook-line);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-muted);
+  --color-success: var(--ok-border);
+  --color-success-bg: var(--ok-bg);
+  --color-success-border: var(--ok-border);
+  --color-success-text: var(--ok-text);
+  --color-warning-bg: var(--warn-bg);
+  --color-warning-border: var(--warn-border);
+  --color-warning-text: var(--warn-text);
+  --color-danger-bg: var(--err-bg);
+  --color-danger-border: var(--err-border);
+  --color-danger-text: var(--err-text);
+  --color-neutral-bg: var(--surface-alt);
+  --color-neutral-border: var(--border);
+  --color-neutral-text: var(--text);
+  --color-guidance-text: var(--hl-text);
+  --color-guidance-bg: var(--hl-bg);
+  --color-guidance-border: var(--hl-border);
+  --color-code-bg: var(--code-bg);
+  --color-code-header: var(--code-header);
+  --color-code-border: var(--code-border);
+  --color-code-text: var(--code-text);
+  --color-code-inline-bg: var(--code-header);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-theory-bg: var(--surface);
+  --color-theory-border: var(--accent);
+  --color-theory-accent: var(--surface-alt);
+  --color-fact-bg: var(--hl-bg);
+  --color-fact-border: var(--hl-border);
+  --color-fact-text: var(--hl-text);
+  --color-quiz-bg: var(--surface);
+  --color-quiz-border: var(--border);
+  --color-quiz-correct-bg: var(--ok-bg);
+  --color-quiz-correct-border: var(--ok-border);
+  --color-quiz-wrong-bg: var(--err-bg);
+  --color-quiz-wrong-border: var(--err-border);
+  --color-boss-bg: var(--boss-bg);
+  --color-boss-border: var(--boss-border);
+  --color-boss-accent: var(--boss-accent);
+  --color-math-bg: var(--math-bg);
+  --color-math-border: var(--math-border);
+  --color-history-bg: var(--history-bg);
+  --color-history-border: var(--history-border);
+  --color-science-bg: var(--science-bg);
+  --color-science-border: var(--science-border);
+  --color-ukrainian-bg: var(--ukrainian-bg);
+  --color-ukrainian-border: var(--ukrainian-border);
+  --color-physics-bg: var(--physics-bg);
+  --color-physics-border: var(--physics-border);
+  --color-informatics-bg: var(--informatics-bg);
+  --color-informatics-border: var(--informatics-border);
+  --color-map-bg: var(--surface-alt);
+  --color-map-line-active: var(--ok-border);
+  --color-map-line-idle: var(--text-muted);
+}
+
+/* 2. Лісова шавлія (Світла комфортна зелена, WCAG AA/AAA) */
+body.theme-sage,
+[data-theme="sage"] {
+  --bg: #e6eee8;
+  --surface: #f7faf8;
+  --surface-alt: #dce7df;
+  --border: #b4c8ba;
+  --text: #14261c;
+  --text-muted: #3f584a;
+  --accent: #1d6146;
+  --accent-text: #f7faf8;
+  --hl-bg: #fcf4dc;
+  --hl-border: #a87018;
+  --hl-text: #5f3d08;
+  --ok-bg: #e2f3ea;
+  --ok-border: #1e6e4a;
+  --ok-text: #134a31;
+
+  --bg-gradient: linear-gradient(165deg, #ebf3ed 0%, #e6eee8 55%, #dce8df 100%);
+  --surface-hover: #e5efe8;
+  --border-hover: #86a892;
+  --primary: #1d6146;
+  --primary-light: #287a59;
+  --primary-dark: #113e2c;
+  --accent-hover: #144833;
+  --accent-light: #e2f0e8;
+  --notebook-bg: #fbfdfb;
+  --notebook-line: #cfe0d5;
+
+  --warn-bg: #fcf4dc;
+  --warn-border: #b87e22;
+  --warn-text: #5f3d08;
+  --err-bg: #fbedeb;
+  --err-border: #c96d67;
+  --err-text: #7b1e19;
+  --modal-scrim: rgba(20, 38, 28, 0.34);
+
+  --code-bg: #e6efe9;
+  --code-header: #d7e5dc;
+  --code-border: #aec5b7;
+  --code-text: #143624;
+
+  --sem-subj: #184e77;
+  --sem-pred: #1b6542;
+  --sem-attr: #653b82;
+  --sem-obj: #965212;
+  --sem-adv: #15626a;
+  --sem-quote-bg: #edf4ef;
+  --sem-quote-border: #1d6146;
+  --sem-quote-text: #14261c;
+  --sem-thesis-bg: #e2f3ea;
+  --sem-thesis-border: #1e6e4a;
+  --sem-thesis-text: #134a31;
+  --sem-warn-bg: #fcf4dc;
+  --sem-warn-border: #a87018;
+  --sem-warn-text: #5f3d08;
+
+  --boss-bg: #eef5f0;
+  --boss-border: #4d8a6e;
+  --boss-accent: #113e2c;
+  --math-bg: #e6f2eb;
+  --math-border: #87b89c;
+  --history-bg: #eaeff6;
+  --history-border: #99afd4;
+  --science-bg: #eaf4e5;
+  --science-border: #98bf82;
+  --ukrainian-bg: #f6f1e2;
+  --ukrainian-border: #cbb074;
+  --physics-bg: #e7f0f6;
+  --physics-border: #8eb2d0;
+  --informatics-bg: #ececf6;
+  --informatics-border: #a3a3d2;
+}
+
+/* 3. Скандинавська (Світла холодна, ясна й контрастна, WCAG AA/AAA) */
+body.theme-nordic,
+[data-theme="nordic"] {
+  --bg: #e8eef5;
+  --surface: #f8fafc;
+  --surface-alt: #dde6f0;
+  --border: #b4c4d6;
+  --text: #0f1f33;
+  --text-muted: #42556b;
+  --accent: #1e4e79;
+  --accent-text: #f8fafc;
+  --hl-bg: #fdf2dc;
+  --hl-border: #a66d1b;
+  --hl-text: #5d3b0b;
+  --ok-bg: #e3f3ed;
+  --ok-border: #1b6b50;
+  --ok-text: #114735;
+
+  --bg-gradient: linear-gradient(165deg, #edf2f8 0%, #e8eef5 55%, #dfe7f1 100%);
+  --surface-hover: #e8eff7;
+  --border-hover: #839bb5;
+  --primary: #1e4e79;
+  --primary-light: #2b6496;
+  --primary-dark: #113252;
+  --accent-hover: #14395a;
+  --accent-light: #e2ecf6;
+  --notebook-bg: #fcfdff;
+  --notebook-line: #d1deec;
+
+  --warn-bg: #fdf2dc;
+  --warn-border: #b87e22;
+  --warn-text: #5d3b0b;
+  --err-bg: #fcedec;
+  --err-border: #c96f6b;
+  --err-text: #7d201d;
+  --modal-scrim: rgba(15, 31, 51, 0.35);
+
+  --code-bg: #e7eef6;
+  --code-header: #d8e3ef;
+  --code-border: #aec0d4;
+  --code-text: #142840;
+
+  --sem-subj: #174978;
+  --sem-pred: #17664a;
+  --sem-attr: #603b85;
+  --sem-obj: #965214;
+  --sem-adv: #15626d;
+  --sem-quote-bg: #ecf2f8;
+  --sem-quote-border: #1e4e79;
+  --sem-quote-text: #0f1f33;
+  --sem-thesis-bg: #e3f3ed;
+  --sem-thesis-border: #1b6b50;
+  --sem-thesis-text: #114735;
+  --sem-warn-bg: #fdf2dc;
+  --sem-warn-border: #a66d1b;
+  --sem-warn-text: #5d3b0b;
+
+  --boss-bg: #eef3f9;
+  --boss-border: #4e7ca8;
+  --boss-accent: #113252;
+  --math-bg: #e7f2f0;
+  --math-border: #87b5ad;
+  --history-bg: #e9eff8;
+  --history-border: #97add6;
+  --science-bg: #eaf3ea;
+  --science-border: #92bc92;
+  --ukrainian-bg: #f7f2e4;
+  --ukrainian-border: #ccb37a;
+  --physics-bg: #e7f0f8;
+  --physics-border: #8fb3d6;
+  --informatics-bg: #ececf8;
+  --informatics-border: #9fa1d6;
+}
+
+/* 4. М'яка лаванда (Світла комфортна фіалкова, WCAG AA/AAA) */
+body.theme-lavender,
+[data-theme="lavender"] {
+  --bg: #eeeaf5;
+  --surface: #faf8fc;
+  --surface-alt: #e4dff0;
+  --border: #c5bdd6;
+  --text: #211833;
+  --text-muted: #52456b;
+  --accent: #553588;
+  --accent-text: #faf8fc;
+  --hl-bg: #fbf0df;
+  --hl-border: #9e6520;
+  --hl-text: #5c380c;
+  --ok-bg: #e5f3ec;
+  --ok-border: #206b49;
+  --ok-text: #154830;
+
+  --bg-gradient: linear-gradient(165deg, #f3f0f8 0%, #eeeaf5 55%, #e5dff0 100%);
+  --surface-hover: #ece7f5;
+  --border-hover: #9f92ba;
+  --primary: #553588;
+  --primary-light: #6b47a3;
+  --primary-dark: #382061;
+  --accent-hover: #41266b;
+  --accent-light: #ece5f7;
+  --notebook-bg: #fdfcff;
+  --notebook-line: #dad3ea;
+
+  --warn-bg: #fbf0df;
+  --warn-border: #b37829;
+  --warn-text: #5c380c;
+  --err-bg: #fbedef;
+  --err-border: #c76f79;
+  --err-text: #7a1f29;
+  --modal-scrim: rgba(33, 24, 51, 0.35);
+
+  --code-bg: #ede9f5;
+  --code-header: #e1dbec;
+  --code-border: #bfb6d4;
+  --code-text: #261b3d;
+
+  --sem-subj: #1f4e82;
+  --sem-pred: #1b6546;
+  --sem-attr: #5e348a;
+  --sem-obj: #965115;
+  --sem-adv: #16626a;
+  --sem-quote-bg: #f1edf8;
+  --sem-quote-border: #553588;
+  --sem-quote-text: #211833;
+  --sem-thesis-bg: #e5f3ec;
+  --sem-thesis-border: #206b49;
+  --sem-thesis-text: #154830;
+  --sem-warn-bg: #fbf0df;
+  --sem-warn-border: #9e6520;
+  --sem-warn-text: #5c380c;
+
+  --boss-bg: #f3effa;
+  --boss-border: #7c62ad;
+  --boss-accent: #382061;
+  --math-bg: #eaeef6;
+  --math-border: #97a8cf;
+  --history-bg: #eeeaf7;
+  --history-border: #ac9dd4;
+  --science-bg: #eaf3ed;
+  --science-border: #91bd9f;
+  --ukrainian-bg: #f7f1e6;
+  --ukrainian-border: #cbb181;
+  --physics-bg: #eaeef7;
+  --physics-border: #97a7d4;
+  --informatics-bg: #efeaf8;
+  --informatics-border: #b29dd6;
+}
+
+/* 5. Фокус (Темна кольорова — глибока синя) */
+body.theme-focus,
+[data-theme="focus"] {
+  --bg: #0b1329;
+  --surface: #1e293b;
+  --surface-alt: #0f172a;
+  --border: #334155;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-text: #0f172a;
+  --hl-bg: rgba(245, 158, 11, 0.16);
+  --hl-border: #f59e0b;
+  --hl-text: #fbbf24;
+  --ok-bg: rgba(16, 185, 129, 0.16);
+  --ok-border: #10b981;
+  --ok-text: #34d399;
+
+  --bg-gradient: linear-gradient(165deg, #0b1329 0%, #0f172a 55%, #111c38 100%);
+  --surface-hover: #263449;
+  --border-hover: #475569;
+  --primary: #38bdf8;
+  --primary-light: #7dd3fc;
+  --primary-dark: #7dd3fc;
+  --accent-hover: #7dd3fc;
+  --accent-light: rgba(56, 189, 248, 0.14);
+  --notebook-bg: #162033;
+  --notebook-line: #293852;
+
+  --warn-bg: rgba(245, 158, 11, 0.16);
+  --warn-border: #f59e0b;
+  --warn-text: #fbbf24;
+  --err-bg: rgba(239, 68, 68, 0.16);
+  --err-border: #f87171;
+  --err-text: #fca5a5;
+  --modal-scrim: rgba(2, 6, 23, 0.72);
+
+  --code-bg: #0f172a;
+  --code-header: #162033;
+  --code-border: #334155;
+  --code-text: #e2e8f0;
+
+  --sem-subj: #60a5fa;
+  --sem-pred: #34d399;
+  --sem-attr: #c084fc;
+  --sem-obj: #fbbf24;
+  --sem-adv: #22d3ee;
+  --sem-quote-bg: rgba(56, 189, 248, 0.12);
+  --sem-quote-border: #38bdf8;
+  --sem-quote-text: #e0f2fe;
+  --sem-thesis-bg: rgba(16, 185, 129, 0.16);
+  --sem-thesis-border: #10b981;
+  --sem-thesis-text: #6ee7b7;
+  --sem-warn-bg: rgba(245, 158, 11, 0.16);
+  --sem-warn-border: #f59e0b;
+  --sem-warn-text: #fcd34d;
+
+  --boss-bg: #162238;
+  --boss-border: #38bdf8;
+  --boss-accent: #e0f2fe;
+  --math-bg: #172536;
+  --math-border: #2c4a6b;
+  --history-bg: #1c2438;
+  --history-border: #364970;
+  --science-bg: #16282a;
+  --science-border: #2b5450;
+  --ukrainian-bg: #26231d;
+  --ukrainian-border: #63512f;
+  --physics-bg: #152538;
+  --physics-border: #2b4c73;
+  --informatics-bg: #1e2238;
+  --informatics-border: #3b4273;
+
+  --shadow-sm: 0 2px 8px rgba(2, 6, 23, 0.35);
+  --shadow-card: 0 10px 28px rgba(2, 6, 23, 0.45);
+  --shadow-modal: 0 20px 48px rgba(2, 6, 23, 0.65);
+  --shadow-btn: 0 4px 12px rgba(2, 6, 23, 0.4);
+}
+
+/* 6. Затишок (Тепла темна — теплий бурштин) */
+body.theme-cozy,
+[data-theme="cozy"] {
+  --bg: #18120f;
+  --surface: #261b16;
+  --surface-alt: #1b1310;
+  --border: #443028;
+  --text: #fef3c7;
+  --text-muted: #d97706;
+  --accent: #f59e0b;
+  --accent-text: #18120f;
+  --hl-bg: rgba(245, 158, 11, 0.22);
+  --hl-border: #f59e0b;
+  --hl-text: #fcd34d;
+  --ok-bg: rgba(16, 185, 129, 0.16);
+  --ok-border: #10b981;
+  --ok-text: #6ee7b7;
+
+  --bg-gradient: linear-gradient(165deg, #18120f 0%, #1f1612 55%, #16100d 100%);
+  --surface-hover: #32241d;
+  --border-hover: #63463a;
+  --primary: #f59e0b;
+  --primary-light: #fbbf24;
+  --primary-dark: #fcd34d;
+  --accent-hover: #fbbf24;
+  --accent-light: rgba(245, 158, 11, 0.16);
+  --notebook-bg: #211813;
+  --notebook-line: #3d2b23;
+
+  --warn-bg: rgba(245, 158, 11, 0.22);
+  --warn-border: #f59e0b;
+  --warn-text: #fcd34d;
+  --err-bg: rgba(239, 68, 68, 0.18);
+  --err-border: #f87171;
+  --err-text: #fca5a5;
+  --modal-scrim: rgba(14, 9, 7, 0.76);
+
+  --code-bg: #1b1310;
+  --code-header: #2b1f1a;
+  --code-border: #443028;
+  --code-text: #fde68a;
+
+  --sem-subj: #60a5fa;
+  --sem-pred: #34d399;
+  --sem-attr: #c084fc;
+  --sem-obj: #fbbf24;
+  --sem-adv: #2dd4bf;
+  --sem-quote-bg: rgba(245, 158, 11, 0.14);
+  --sem-quote-border: #f59e0b;
+  --sem-quote-text: #fef3c7;
+  --sem-thesis-bg: rgba(16, 185, 129, 0.16);
+  --sem-thesis-border: #10b981;
+  --sem-thesis-text: #6ee7b7;
+  --sem-warn-bg: rgba(245, 158, 11, 0.22);
+  --sem-warn-border: #f59e0b;
+  --sem-warn-text: #fcd34d;
+
+  --boss-bg: #261c14;
+  --boss-border: #b47824;
+  --boss-accent: #fde68a;
+  --math-bg: #261e18;
+  --math-border: #594433;
+  --history-bg: #281e19;
+  --history-border: #634636;
+  --science-bg: #212219;
+  --science-border: #4d5434;
+  --ukrainian-bg: #2a2016;
+  --ukrainian-border: #6b4e2b;
+  --physics-bg: #241f1c;
+  --physics-border: #59473e;
+  --informatics-bg: #251e21;
+  --informatics-border: #5e4452;
+
+  --shadow-sm: 0 2px 8px rgba(10, 6, 4, 0.4);
+  --shadow-card: 0 10px 28px rgba(10, 6, 4, 0.5);
+  --shadow-modal: 0 20px 48px rgba(10, 6, 4, 0.72);
+  --shadow-btn: 0 4px 12px rgba(10, 6, 4, 0.45);
+}
+
+/* 7. Ч/Б Світла (Папір E-Ink, 0% кольору) */
+body.theme-mono-light,
+[data-theme="mono-light"] {
+  --bg: #e5e5e5;
+  --surface: #fafafa;
+  --surface-alt: #f0f0f0;
+  --border: #a3a3a3;
+  --text: #111111;
+  --text-muted: #525252;
+  --accent: #111111;
+  --accent-text: #fafafa;
+  --hl-bg: #111111;
+  --hl-border: #111111;
+  --hl-text: #fafafa;
+  --ok-bg: #e5e5e5;
+  --ok-border: #111111;
+  --ok-text: #111111;
+
+  --bg-gradient: #e5e5e5;
+  --surface-hover: #ebebeb;
+  --border-hover: #525252;
+  --primary: #111111;
+  --primary-light: #333333;
+  --primary-dark: #111111;
+  --accent-hover: #2b2b2b;
+  --accent-light: #e5e5e5;
+  --notebook-bg: #fafafa;
+  --notebook-line: #d4d4d4;
+
+  --warn-bg: #f0f0f0;
+  --warn-border: #262626;
+  --warn-text: #111111;
+  --err-bg: #ebebeb;
+  --err-border: #111111;
+  --err-text: #111111;
+  --modal-scrim: rgba(17, 17, 17, 0.45);
+
+  --code-bg: #f0f0f0;
+  --code-header: #e5e5e5;
+  --code-border: #a3a3a3;
+  --code-text: #111111;
+
+  --sem-subj: #111111;
+  --sem-pred: #111111;
+  --sem-attr: #111111;
+  --sem-obj: #111111;
+  --sem-adv: #111111;
+  --sem-quote-bg: #f0f0f0;
+  --sem-quote-border: #111111;
+  --sem-quote-text: #111111;
+  --sem-thesis-bg: #e5e5e5;
+  --sem-thesis-border: #111111;
+  --sem-thesis-text: #111111;
+  --sem-warn-bg: #111111;
+  --sem-warn-border: #111111;
+  --sem-warn-text: #fafafa;
+
+  --boss-bg: #f0f0f0;
+  --boss-border: #525252;
+  --boss-accent: #111111;
+  --math-bg: #f5f5f5;
+  --math-border: #737373;
+  --history-bg: #f5f5f5;
+  --history-border: #737373;
+  --science-bg: #f5f5f5;
+  --science-border: #737373;
+  --ukrainian-bg: #f5f5f5;
+  --ukrainian-border: #737373;
+  --physics-bg: #f5f5f5;
+  --physics-border: #737373;
+  --informatics-bg: #f5f5f5;
+  --informatics-border: #737373;
+
+  --shadow-sm: 0 2px 6px rgba(17, 17, 17, 0.08);
+  --shadow-card: 0 8px 20px rgba(17, 17, 17, 0.1);
+  --shadow-modal: 0 16px 36px rgba(17, 17, 17, 0.18);
+  --shadow-btn: 0 3px 8px rgba(17, 17, 17, 0.15);
+}
+
+html[data-theme="mono-light"] {
+  filter: grayscale(100%);
+}
+
+/* 8. Ч/Б Темна (Графіт OLED, 0% кольору) */
+body.theme-mono-dark,
+[data-theme="mono-dark"] {
+  --bg: #000000;
+  --surface: #121212;
+  --surface-alt: #1a1a1a;
+  --border: #3a3a3a;
+  --text: #ececec;
+  --text-muted: #9a9a9a;
+  --accent: #ececec;
+  --accent-text: #000000;
+  --hl-bg: #ececec;
+  --hl-border: #ececec;
+  --hl-text: #000000;
+  --ok-bg: #262626;
+  --ok-border: #ececec;
+  --ok-text: #ececec;
+
+  --bg-gradient: #000000;
+  --surface-hover: #222222;
+  --border-hover: #737373;
+  --primary: #ececec;
+  --primary-light: #ffffff;
+  --primary-dark: #ffffff;
+  --accent-hover: #d4d4d4;
+  --accent-light: #262626;
+  --notebook-bg: #141414;
+  --notebook-line: #2e2e2e;
+
+  --warn-bg: #1f1f1f;
+  --warn-border: #cccccc;
+  --warn-text: #ececec;
+  --err-bg: #242424;
+  --err-border: #ececec;
+  --err-text: #ffffff;
+  --modal-scrim: rgba(0, 0, 0, 0.78);
+
+  --code-bg: #161616;
+  --code-header: #222222;
+  --code-border: #3a3a3a;
+  --code-text: #ececec;
+
+  --sem-subj: #ececec;
+  --sem-pred: #ececec;
+  --sem-attr: #ececec;
+  --sem-obj: #ececec;
+  --sem-adv: #ececec;
+  --sem-quote-bg: #1a1a1a;
+  --sem-quote-border: #ececec;
+  --sem-quote-text: #ececec;
+  --sem-thesis-bg: #262626;
+  --sem-thesis-border: #ececec;
+  --sem-thesis-text: #ececec;
+  --sem-warn-bg: #ececec;
+  --sem-warn-border: #ececec;
+  --sem-warn-text: #000000;
+
+  --boss-bg: #1a1a1a;
+  --boss-border: #737373;
+  --boss-accent: #ececec;
+  --math-bg: #141414;
+  --math-border: #525252;
+  --history-bg: #141414;
+  --history-border: #525252;
+  --science-bg: #141414;
+  --science-border: #525252;
+  --ukrainian-bg: #141414;
+  --ukrainian-border: #525252;
+  --physics-bg: #141414;
+  --physics-border: #525252;
+  --informatics-bg: #141414;
+  --informatics-border: #525252;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.65);
+  --shadow-modal: 0 20px 48px rgba(0, 0, 0, 0.85);
+  --shadow-btn: 0 4px 12px rgba(0, 0, 0, 0.55);
+}
+
+html[data-theme="mono-dark"] {
+  filter: grayscale(100%);
+}

@@ -1,0 +1,83 @@
+id: "01-cyber-hygiene-and-protocols"
+title: "Цифрова гігієна, фішинг та протокол безпеки"
+subjectId: "cybersecurity"
+gradeId: "grade-05"
+description: "Вчимося розрізняти небезпечні посилання, виявляти маніпулятивні формулювання та діяти за чітким протоколом безпеки."
+speaker: "Кібервартівник Тарас"
+speakerAvatar: "🛡️"
+islandStageName: "Щитова вежа мережі"
+
+blocks:
+  - id: "cyber-01-dialogue"
+    type: "block_dialogue"
+    speaker: "Кібервартівник Тарас"
+    avatar: "🛡️"
+    emote: "idea"
+    text: |
+      Вітаю на Щитовій вежі! У мережі зловмисники часто маскують пастки під «термінові призи» чи «повідомлення від школи».
+
+      Ось три кроки, які завжди захистять твій акаунт:
+      {{protocol_steps:title="Золоте правило кібергігієни";steps="Зупиніться й перевірте адресу сайту (домен)|Не вводьте паролі або коди з SMS за підозрілим посиланням|Збережіть доказ (скріншот) і повідомте дорослих чи вчителя"}}
+
+  - id: "cyber-02-marking"
+    type: "block_text_marking"
+    title: "Критичне читання: знайди пастку"
+    prompt: "Уважно прочитайте повідомлення та позначте підозрілу приховану умову («Дрібний шрифт») і головний технічний доказ шахрайства («Доказ»):"
+    sentence: "Вітаємо! Ви виграли планшет! Щоб отримати приз, [[fine_print:негайно підтвердіть картку батьків]] на сайті [[evidence:shkola-prize-free.xyz]] протягом 5 хвилин."
+    availableTools:
+      - "fine_print"
+      - "evidence"
+    toleranceMode: "exact"
+    explanation: "Домен .xyz не належить офіційній школі, а вимога негайно ввести дані банківської картки — класична ознака фішингу."
+    copilotHint: "Зверніть увагу на фразу про банківську картку та на дивну адресу сайту."
+
+  - id: "cyber-03-sorter-baskets"
+    type: "block_interactive_sandbox"
+    engineId: "drag-sorter-protocol"
+    instruction: "Розподіліть повідомлення та сайти у два кошики: безпечні ресурси та фішингові загрози."
+    engineConfig:
+      mode: "baskets"
+      title: "🗂️ Сортування цифрових повідомлень"
+      baskets:
+        - id: "safe"
+          label: "Безпечні ресурси"
+          symbol: "●"
+        - id: "threat"
+          label: "Фішинг і загрози"
+          symbol: "▲"
+      items:
+        - id: "msg1"
+          text: "Офіційний електронний щоденник на домені .edu.ua"
+          targetBasketId: "safe"
+        - id: "msg2"
+          text: "«Терміново! Введіть пароль від пошти, інакше видалимо акаунт»"
+          targetBasketId: "threat"
+        - id: "msg3"
+          text: "Двофакторне підтвердження входу, яке ви щойно самі запустили"
+          targetBasketId: "safe"
+        - id: "msg4"
+          text: "Невідомий файл «Podarunok_free.exe» у чаті від незнайомця"
+          targetBasketId: "threat"
+
+  - id: "cyber-04-protocol-order"
+    type: "block_interactive_sandbox"
+    engineId: "drag-sorter-protocol"
+    instruction: "Учень усе ж таки отримав дивний фішинговий лист. Упорядкуйте правильний протокол реагування від кроку 1 до кроку 4."
+    engineConfig:
+      mode: "protocol"
+      title: "📋 Протокол дій при підозрі на фішинг"
+      steps:
+        - id: "step1"
+          text: "Не натискати на посилання та не завантажувати вкладення"
+        - id: "step2"
+          text: "Перевірити справжню адресу відправника або домен"
+        - id: "step3"
+          text: "Зробити знімок екрана для збереження доказів"
+        - id: "step4"
+          text: "Повідомити батьків, учителя або адміністратора шкільної мережі"
+
+  - id: "cyber-05-pause"
+    type: "block_somatic_pause"
+    activityId: "eye_eight"
+    durationSec: 20
+    guideVoiceText: "Після роботи з екраном плавно окресліть очима горизонтальну вісімку 3–4 рази, щоб зняти напругу."

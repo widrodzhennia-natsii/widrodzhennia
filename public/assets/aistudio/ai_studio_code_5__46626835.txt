@@ -1,0 +1,12 @@
+id: "math-05-khortytsia"
+title: "Математична експедиція: Хортицька фортеця 1557"
+grade: 5
+subject: "math"
+standard: "НУШ-2023"
+version: "1.0.0"
+author: "Open Education Community"
+
+# Модульні посилання на компоненти світу
+rosterRef: "./roster.yaml"
+worldMapRef: "./world-map.yaml"
+entryLessonId: "lesson-01-place-values"

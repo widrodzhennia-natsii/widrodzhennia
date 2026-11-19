@@ -1,0 +1,32 @@
+mapTitle: "Фарватер Дніпрових Порогів (1557)"
+theme: "cossack_river"
+layoutEngine: "three_lane_river"
+
+flow:
+  # 1. Стартова тема
+  - nodeId: "node-01"
+    title: "1. Облік річкового обозу"
+    lessonRef: "./lessons/lesson-01-place-values.yaml"
+    sideBranches:
+      - branchId: "branch-01-fish"
+        title: "Рибальські ваги"
+        icon: "🐟"
+        lessonRef: "./lessons/extra-fish.yaml"
+
+  # 2. Друга тема
+  - nodeId: "node-02"
+    title: "2. Фарватер порогів"
+    lessonRef: "./lessons/lesson-02-comparison.yaml"
+    sideBranches:
+      - branchId: "branch-02-tea"
+        title: "Степовий чай"
+        icon: "🍵"
+        lessonRef: "./lessons/extra-tea.yaml"
+
+  # 3. Кульмінація теми
+  - nodeId: "node-03"
+    title: "3. Зведення В'їзної Брами"
+    lessonRef: "./lessons/lesson-03-milestone-gate.yaml"
+    blueprintRef: "./blueprints/timber-gate.blueprint.yaml"
+    isMilestone: true
+    icon: "🏰"

@@ -1,0 +1,87 @@
+id: "01-color-wheel-and-perspective"
+title: "Коло Іттена, лінійна перспектива та світлотінь"
+subjectId: "art"
+gradeId: "grade-05"
+description: "Змішування основних і похідних барв, лінія горизонту, точка сходу F та моделювання об’єму світлом і штрихом."
+speaker: "Художник Орест"
+speakerAvatar: "🎨"
+islandStageName: "Майстерня митця"
+
+blocks:
+  - id: "art-01-dialogue"
+    type: "block_dialogue"
+    speaker: "Художник Орест"
+    avatar: "🎨"
+    emote: "idea"
+    text: "Вітаю у Майстерні митця! Живопис і графіка тримаються на трьох законах: гармонії кольору, глибині перспективи та грі світла й тіні. Перевіримо кожен із них власноруч!"
+
+  - id: "art-02-theory"
+    type: "block_theory_rule"
+    title: "Три основні кольори та лінія горизонту"
+    ruleSummary: |
+      [[thesis:Три основні кольори (жовтий, червоний, синій) неможливо отримати змішуванням інших фарб, але з них народжуються всі похідні відтінки.]]
+
+      Дослідіть на живій схемі, як змінюється простір при русі лінії горизонту й точки сходу F:
+      {{perspective_guide:horizon=40;vanishing=50}}
+    formulaText: "Жовтий + Синій = Зелений · Жовтий + Червоний = Помаранчевий · Червоний + Синій = Фіолетовий"
+    stepByStepBreakdown:
+      - "Лінія горизонту завжди розташована на рівні очей спостерігача."
+      - "Паралельні лінії дороги, алей і дахів у перспективі сходяться в одній точці сходу F на горизонті."
+      - "На кулястих предметах об’єм створюють світло, півтінь, власна тінь, рефлекс та падаюча тінь."
+
+  - id: "art-03-color-mix"
+    type: "block_interactive_sandbox"
+    engineId: "color-perspective-studio"
+    instruction: "Змішайте на палітрі дві основні фарби так, щоб отримати зелений колір."
+    engineConfig:
+      mode: "color_mix"
+      title: "Палітра кола Іттена"
+      targetColor: "green"
+      availablePigments: ["yellow", "red", "blue", "white", "black"]
+      successMessage: "Вірно! Поєднання теплого жовтого й холодного синього утворює свіжий зелений колір."
+
+  - id: "art-04-perspective"
+    type: "block_interactive_sandbox"
+    engineId: "color-perspective-studio"
+    instruction: "Перетягніть точку сходу F на полотні або скористайтесь повзунками: горизонт ~38%, точка сходу F у центрі ~50%."
+    engineConfig:
+      mode: "perspective"
+      title: "Побудова вулиці в лінійній перспективі"
+      targetHorizon: 38
+      targetVanishing: 50
+      tolerance: 8
+      successMessage: "Композиція врівноважена! Дорога й дерева плавно зменшуються до симетричної точки сходу F."
+
+  - id: "art-05-shading"
+    type: "block_interactive_sandbox"
+    engineId: "color-perspective-studio"
+    instruction: "Налаштуйте джерело світла зліва зверху під кутом близько 40° (допуск ±18°), щоб утворити виразну тінь праворуч."
+    engineConfig:
+      mode: "shading"
+      title: "Моделювання кулі світлотінню"
+      targetLightAngle: 40
+      toleranceAngle: 18
+      successMessage: "Відблиск, півтінь і падаюча тінь лягли природно, передавши тривимірний об’єм кулі."
+
+  - id: "art-06-quiz"
+    type: "block_recognition_quiz"
+    multiSelect: false
+    question: "Яку пару основних кольорів потрібно змішати, щоб отримати фіолетовий відтінок?"
+    explanation: "Фіолетовий є похідним кольором другого порядку, який утворюється поєднанням червоної та синьої фарб."
+    copilotHint: "Згадайте два кольори з трійки «жовтий, червоний, синій», без участі жовтого."
+    options:
+      - text: "Червоний і синій"
+        isCorrect: true
+        feedbackSuccess: "Правильно! Червоний + синій дають глибокий фіолетовий."
+      - text: "Жовтий і синій"
+        isCorrect: false
+        feedbackFail: "Жовтий із синім утворюють зелений колір."
+      - text: "Жовтий і білий"
+        isCorrect: false
+        feedbackFail: "Білий лише висвітлює жовтий до ніжно-лимонного відтінку."
+
+  - id: "art-07-pause"
+    type: "block_somatic_pause"
+    activityId: "eye_eight"
+    durationSec: 20
+    guideVoiceText: "Після роботи з композицією окресліть очима плавну горизонтальну вісімку ∞, щоб зняти напругу з зору."

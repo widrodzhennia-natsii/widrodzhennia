@@ -1,0 +1,83 @@
+id: "02-measurements-thermometer-beaker"
+title: "Ціна поділки приладів: термометр, мензурка та класифікація природи"
+subjectId: "science"
+gradeId: "grade-05"
+description: "Визначення ціни поділки шкали, вимірювання температури та об’єму рідини, а також сортування тіл живої й неживої природи."
+speaker: "Ботанік Мирослава"
+speakerAvatar: "🌿"
+islandStageName: "Лабораторія вимірювань"
+
+blocks:
+  - id: "sci2-01-theory"
+    type: "block_theory_rule"
+    title: "Як визначити ціну поділки шкали"
+    ruleSummary: |
+      [[thesis:Щоб знайти ціну поділки приладу, візьміть два сусідні підписані числа, знайдіть їхню різницю й поділіть на кількість проміжків між ними.]]
+
+      Поекспериментуйте з повзунками на термометрі й мензурці:
+      {{scale_gauge:type="thermometer";min=-10;max=40;value=22;step=2;unit="°C"}} {{scale_gauge:type="beaker";min=0;max=100;value=60;step=10;unit="мл"}}
+    formulaText: "Ціна поділки = (B − A) / n"
+    stepByStepBreakdown:
+      - "Знайдіть різницю між двома сусідніми числовими позначками (наприклад, 40 − 20 = 20)."
+      - "Полічіть кількість проміжків між ними (наприклад, 10)."
+      - "Поділіть різницю на число проміжків: 20 / 10 = 2 одиниці на поділку."
+
+  - id: "sci2-02-thermometer"
+    type: "block_interactive_sandbox"
+    engineId: "number-line-scales"
+    instruction: "Встановіть на лабораторному термометрі температуру 26 °C (ціна поділки — 2 °C)."
+    engineConfig:
+      scaleType: "thermometer"
+      min: -10
+      max: 40
+      step: 2
+      initialValue: 10
+      targetValue: 26
+      unit: "°C"
+
+  - id: "sci2-03-beaker"
+    type: "block_interactive_sandbox"
+    engineId: "number-line-scales"
+    instruction: "Відмірте у вимірювальній мензурці 175 мл води для досліду (ціна поділки — 25 мл)."
+    engineConfig:
+      scaleType: "beaker"
+      min: 0
+      max: 250
+      step: 25
+      initialValue: 50
+      targetValue: 175
+      unit: "мл"
+
+  - id: "sci2-04-sorter"
+    type: "block_interactive_sandbox"
+    engineId: "drag-sorter-protocol"
+    instruction: "Розсортуйте об’єкти природи у два кошики: тіла живої природи та об’єкти неживої природи."
+    engineConfig:
+      mode: "baskets"
+      title: "🌿 Жива та нежива природа"
+      baskets:
+        - id: "living"
+          label: "Жива природа"
+          symbol: "●"
+        - id: "nonliving"
+          label: "Нежива природа"
+          symbol: "◆"
+      items:
+        - id: "nat1"
+          text: "Дуб звичайний"
+          targetBasketId: "living"
+        - id: "nat2"
+          text: "Гранітна скеля"
+          targetBasketId: "nonliving"
+        - id: "nat3"
+          text: "Білий гриб"
+          targetBasketId: "living"
+        - id: "nat4"
+          text: "Дощова хмара"
+          targetBasketId: "nonliving"
+
+  - id: "sci2-05-pause"
+    type: "block_somatic_pause"
+    activityId: "double_sigh"
+    durationSec: 20
+    guideVoiceText: "Зробіть подвійний фізіологічний вдих носом і повільний спокійний видих ротом."

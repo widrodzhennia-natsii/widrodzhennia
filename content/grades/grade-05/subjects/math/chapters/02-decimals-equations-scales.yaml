@@ -1,0 +1,68 @@
+id: "02-decimals-equations-scales"
+title: "Десяткові дроби, рівняння з X та вимірювання часу"
+subjectId: "math"
+gradeId: "grade-05"
+description: "Практикум із десятковими розрядами на Соробан-рахівниці, розв’язуванням рівнянь на терезах та визначенням часу на годиннику."
+speaker: "Майстер Орест"
+speakerAvatar: "📐"
+islandStageName: "Вежа точних розрахунків"
+
+blocks:
+  - id: "math2-01-theory"
+    type: "block_theory_rule"
+    title: "Десяткові розряди та кут між стрілками"
+    ruleSummary: |
+      [[thesis:Кожна цифра після коми у десятковому дробі позначає десяті (×0,1) або соті (×0,01) частки одиниці.]]
+
+      А на механічному годиннику кожна годинна поділка становить 30°, тому о 03:15 хвилинна і годинна стрілки розташовані майже поруч — перевірте самі:
+      {{clock_face:hour=3;minute=15}}
+    formulaText: "10,00 + 4,00 + 0,30 + 0,07 = 14,37"
+    stepByStepBreakdown:
+      - "Спочатку набираємо цілу частину числа (десятки та одиниці)."
+      - "Після коми виставляємо десяті (×0,1) та соті (×0,01)."
+
+  - id: "math2-02-abacus-decimals"
+    type: "block_interactive_sandbox"
+    engineId: "place-value-abacus"
+    instruction: "Виставте на десятковій Соробан-рахівниці значення довжини 14,37 м."
+    engineConfig:
+      allowDecimals: true
+      initialValue: 0
+      targetValue: 14.37
+
+  - id: "math2-03-balance-equation"
+    type: "block_interactive_sandbox"
+    engineId: "balance-physics"
+    instruction: "Розв’яжіть рівняння X + 9 = 25 на важільних терезах, дібравши масу X."
+    engineConfig:
+      mode: "equation"
+      leftConstant: 9
+      unknownValue: 16
+      targetSum: 25
+      unitLabel: "од."
+
+  - id: "math2-04-clock"
+    type: "block_interactive_sandbox"
+    engineId: "number-line-scales"
+    instruction: "Установіть на аналоговому годиннику час початку олімпіади — 09:25."
+    engineConfig:
+      scaleType: "clock"
+      initialHour: 12
+      initialMinute: 0
+      targetHour: 9
+      targetMinute: 25
+
+  - id: "math2-05-quiz"
+    type: "block_recognition_quiz"
+    question: "Яке число утвориться, якщо на десятковій рахівниці виставити 2 десятки, 0 одиниць, 5 десятих і 8 сотих?"
+    options:
+      - text: "20,58"
+        isCorrect: true
+        feedbackSuccess: "Точно! 20 + 0,5 + 0,08 = 20,58."
+      - text: "2,58"
+        isCorrect: false
+        feedbackFail: "2 десятки дають 20 у цілій частині, а 0 одиниць стоять перед комою."
+      - text: "20,85"
+        isCorrect: false
+        feedbackFail: "Десяті записуються першою цифрою після коми, а соті — другою."
+    explanation: "2 × 10 + 0 × 1 + 5 × 0,1 + 8 × 0,01 = 20,58."

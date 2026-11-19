@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Міст десятків і одиниць</title>
+
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --error: #b91c1c;
+      --error-bg: #fee2e2;
+      --border: #dbe3ef;
+      --yellow: #fef3c7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    .app {
+      width: min(920px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    header {
+      padding: 24px;
+      color: white;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.2);
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.92;
+    }
+
+    .progress {
+      height: 10px;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: #fde68a;
+      transition: width 0.3s ease;
+    }
+
+    .card {
+      margin-top: 20px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+      box-shadow: 0 8px 25px rgba(30, 41, 59, 0.06);
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    .story {
+      padding: 16px;
+      border-left: 5px solid #f59e0b;
+      border-radius: 10px;
+      background: var(--yellow);
+    }
+
+    .character {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #eef2ff;
+    }
+
+    .character-icon {
+      font-size: 2rem;
+    }
+
+    .character p {
+      margin: 0;
+    }
+
+    .highlight {
+      color: var(--primary-dark);
+      font-weight: bold;
+    }
+
+    .number-builder {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .place-value {
+      padding: 18px;
+      text-align: center;
+      border: 2px dashed #a5b4fc;
+      border-radius: 16px;
+      background: #eef2ff;
+    }
+
+    .place-value strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 2.5rem;
+      color: var(--primary-dark);
+    }
+
+    .place-value span {
+      color: var(--muted);
+    }
+
+    .formula {
+      margin: 16px 0;
+      padding: 18px;
+      text-align: center;
+      border-radius: 14px;
+      background: #f8fafc;
+      font-size: 1.2rem;
+    }
+
+    .formula strong {
+      color: var(--primary-dark);
+    }
+
+    .question {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .answers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    button {
+      padding: 13px 16px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      background: var(--primary);
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      cursor: default;
+      opacity: 0.65;
+      transform: none;
+    }
+
+    .answer-button {
+      color: var(--text);
+      border: 2px solid var(--border);
+      background: white;
+    }
+
+    .answer-button:hover {
+      color: var(--text);
+      background: #f8fafc;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+
+    .feedback.success {
+      display: block;
+      color: var(--success);
+      background: var(--success-bg);
+    }
+
+    .feedback.error {
+      display: block;
+      color: var(--error);
+      background: var(--error-bg);
+    }
+
+    .match-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .match-column {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #f8fafc;
+    }
+
+    .match-column h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .match-option {
+      width: 100%;
+      margin-top: 8px;
+      color: var(--text);
+      border: 2px solid var(--border);
+      background: white;
+      text-align: left;
+    }
+
+    .match-option.selected {
+      border-color: var(--primary);
+      background: #e0e7ff;
+    }
+
+    .match-option.correct {
+      border-color: #22c55e;
+      background: var(--success-bg);
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 18px;
+      text-align: center;
+      border-radius: 14px;
+      background: #ecfdf5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 650px) {
+      .number-builder,
+      .match-area,
+      .answers {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header>
+      <h1>Міст десятків і одиниць</h1>
+      <p>Допоможи Бобру Брусу порахувати матеріали для ремонту мосту.</p>
+
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>1. Знайомство з додаванням</h2>
+
+      <div class="story">
+        Після бурі міст пошкодився. Бобер Брус знайшов
+        <span class="highlight">24 дерев’яні дошки</span>, а потім отримав ще
+        <span class="highlight">13 дощок</span>.
+        Треба дізнатися, скільки дощок стало всього.
+      </div>
+
+      <div class="character">
+        <div class="character-icon">🦫</div>
+        <p>
+          <strong>Брус:</strong>
+          «Не поспішай одразу рахувати все разом. Спочатку подивімося,
+          з чого складаються числа».
+        </p>
+      </div>
+
+      <div class="number-builder">
+        <div class="place-value">
+          <strong>24</strong>
+          <span>2 десятки і 4 одиниці</span>
+        </div>
+
+        <div class="place-value">
+          <strong>13</strong>
+          <span>1 десяток і 3 одиниці</span>
+        </div>
+      </div>
+
+      <div class="formula">
+        Додаємо десятки:
+        <strong>20 + 10 = 30</strong>
+        <br />
+
+        Додаємо одиниці:
+        <strong>4 + 3 = 7</strong>
+        <br /><br />
+
+        Об’єднуємо результат:
+        <strong>30 + 7 = 37</strong>
+      </div>
+
+      <div class="character">
+        <div class="character-icon">💡</div>
+        <p>
+          Отже, при додаванні двоцифрових чисел можна окремо додати десятки
+          й окремо одиниці, а потім об’єднати результати.
+        </p>
+      </div>
+    </section>
+
+    <section class="card question" id="questionOne">
+      <h2>2. Перевіримо розуміння</h2>
+
+      <p>
+        За що відповідає цифра <strong>2</strong> у числі <strong>24</strong>?
+      </p>
+
+      <div class="answers">
+        <button class="answer-button" data-correct="false">
+          За 2 одиниці
+        </button>
+
+        <button class="answer-button" data-correct="true">
+          За 2 десятки
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          За число 24 повністю
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          Вона нічого не означає
+        </button>
+      </div>
+
+      <div class="feedback" id="feedbackOne"></div>
+    </section>
+
+    <section class="card question" id="questionTwo">
+      <h2>3. Розбери число</h2>
+
+      <p>
+        Обери правильне пояснення для числа <strong>37</strong>.
+      </p>
+
+      <div class="answers">
+        <button class="answer-button" data-correct="false">
+          3 одиниці та 7 десятків
+        </button>
+
+        <button class="answer-button" data-correct="true">
+          3 десятки та 7 одиниць
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          37 десятків
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          30 одиниць і 7 десятків
+        </button>
+      </div>
+
+      <div class="feedback" id="feedbackTwo"></div>
+    </section>
+
+    <section class="card question" id="questionThree">
+      <h2>4. Практичне завдання</h2>
+
+      <div class="story">
+        Брус уже поклав на міст 32 дошки. Сова принесла ще 15.
+        Скільки дощок тепер на мосту?
+      </div>
+
+      <div class="character">
+        <div class="character-icon">🦉</div>
+        <p>
+          <strong>Сова:</strong>
+          «Порахуй уважно: спочатку десятки, потім одиниці».
+        </p>
+      </div>
+
+      <div class="answers">
+        <button class="answer-button" data-correct="false">
+          37
+        </button>
+
+        <button class="answer-button" data-correct="true">
+          47
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          57
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          42
+        </button>
+      </div>
+
+      <div class="feedback" id="feedbackThree"></div>
+    </section>
+
+    <section class="card question">
+      <h2>5. Вільна практика</h2>
+
+      <p>
+        Вибери, що треба зробити спочатку, щоб обчислити
+        <strong>41 + 26</strong>.
+      </p>
+
+      <div class="answers">
+        <button class="answer-button" data-correct="false">
+          Додати 41 і 26 без пояснення
+        </button>
+
+        <button class="answer-button" data-correct="true">
+          Окремо додати десятки й одиниці
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          Відняти 26 від 41
+        </button>
+
+        <button class="answer-button" data-correct="false">
+          Помножити 41 на 26
+        </button>
+      </div>
+
+      <div class="feedback" id="feedbackFour"></div>
+    </section>
+
+    <section class="card result hidden" id="finalResult">
+      <h2>Міст відремонтовано! 🛠️</h2>
+      <p id="scoreText"></p>
+      <button id="restartButton">Пройти ще раз</button>
+    </section>
+  </main>
+
+  <script>
+    const questionSections = [
+      document.querySelector("#questionOne"),
+      document.querySelector("#questionTwo"),
+      document.querySelector("#questionThree"),
+      document.querySelector(".question:nth-of-type(5)")
+    ];
+
+    const feedbackMessages = [
+      {
+        success: "Правильно! Цифра 2 стоїть на місці десятків, тому це 2 десятки, або 20.",
+        error: "Майже! У числі 24 цифра 2 означає 2 десятки, тобто 20."
+      },
+      {
+        success: "Чудово! 37 — це 3 десятки і 7 одиниць.",
+        error: "Подивися на розряд: перша цифра показує десятки, друга — одиниці."
+      },
+      {
+        success: "Міст урятовано! 32 + 15 = 30 + 10 + 2 + 5 = 47.",
+        error: "Розклади числа: 32 = 30 + 2, а 15 = 10 + 5. Разом буде 47."
+      },
+      {
+        success: "Саме так! Спершу зручно окремо додати десятки та одиниці.",
+        error: "Спробуй розкласти числа на десятки й одиниці. Так буде легше не заплутатися."
+      }
+    ];
+
+    let score = 0;
+    let answered = 0;
+    const totalQuestions = 4;
+
+    const progressBar = document.querySelector("#progressBar");
+    const finalResult = document.querySelector("#finalResult");
+    const scoreText = document.querySelector("#scoreText");
+    const restartButton = document.querySelector("#restartButton");
+
+    const allAnswerButtons = document.querySelectorAll(".answer-button");
+
+    allAnswerButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const question = button.closest(".question");
+        const buttons = question.querySelectorAll(".answer-button");
+        const feedback = question.querySelector(".feedback");
+
+        // Не дозволяємо відповідати на те саме питання кілька разів
+        if (question.dataset.answered === "true") {
+          return;
+        }
+
+        question.dataset.answered = "true";
+
+        buttons.forEach((item) => {
+          item.disabled = true;
+        });
+
+        const isCorrect = button.dataset.correct === "true";
+        const questionIndex = getQuestionIndex(question);
+
+        if (isCorrect) {
+          score++;
+          feedback.className = "feedback success";
+          feedback.textContent = "✅ " + feedbackMessages[questionIndex].success;
+          button.style.borderColor = "#22c55e";
+          button.style.background = "#dcfce7";
+        } else {
+          feedback.className = "feedback error";
+          feedback.textContent = "💬 " + feedbackMessages[questionIndex].error;
+          button.style.borderColor = "#ef4444";
+          button.style.background = "#fee2e2";
+
+          // Показуємо правильну відповідь
+          buttons.forEach((item) => {
+            if (item.dataset.correct === "true") {
+              item.style.borderColor = "#22c55e";
+              item.style.background = "#dcfce7";
+            }
+          });
+        }
+
+        answered++;
+        updateProgress();
+
+        if (answered === totalQuestions) {
+          setTimeout(showFinalResult, 700);
+        }
+      });
+    });
+
+    function getQuestionIndex(question) {
+      const allQuestions = Array.from(document.querySelectorAll(".question"));
+      return allQuestions.indexOf(question);
+    }
+
+    function updateProgress() {
+      const percent = (answered / totalQuestions) * 100;
+      progressBar.style.width = percent + "%";
+    }
+
+    function showFinalResult() {
+      finalResult.classList.remove("hidden");
+
+      if (score === totalQuestions) {
+        scoreText.textContent =
+          `Твій результат: ${score} з ${totalQuestions}. Ідеально! Брус може спокійно відкривати міст.`;
+      } else if (score >= 2) {
+        scoreText.textContent =
+          `Твій результат: ${score} з ${totalQuestions}. Основу зрозуміло, але деякі місця варто повторити.`;
+      } else {
+        scoreText.textContent =
+          `Твій результат: ${score} з ${totalQuestions}. Нічого страшного — повернися до пояснення і спробуй ще раз.`;
+      }
+
+      finalResult.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    restartButton.addEventListener("click", () => {
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>
