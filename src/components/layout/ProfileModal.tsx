@@ -10,6 +10,7 @@ import {
   BUCKET_LABELS,
   useEconomyAccountsStore,
 } from '../../features/economy/useEconomyAccountsStore';
+import { CURRENT_APP_VERSION, LAST_UPDATED_DATE } from '../../resources/versionInfo';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -425,6 +426,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           <Button type="button" variant="outline" size="sm" onClick={handleOpenAuthorStudio}>
             🔐 Студія автора
           </Button>
+        </div>
+
+        <div className="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--text-muted)]">
+          <span>Версія платформи: v{CURRENT_APP_VERSION} ({LAST_UPDATED_DATE})</span>
+          <span>Код: MPL-2.0 · Контент: CC BY-NC-SA 4.0</span>
         </div>
       </div>
     </Modal>
