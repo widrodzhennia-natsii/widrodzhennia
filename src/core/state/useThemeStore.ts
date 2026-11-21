@@ -22,7 +22,7 @@ export const THEME_OPTIONS: ThemeOption[] = [
   { id: 'nordic', label: '❄️ Скандинавська', group: 'light' },
   { id: 'lavender', label: '🪻 М’яка лаванда', group: 'light' },
   { id: 'focus', label: '🌌 Фокус (Темна)', group: 'dark' },
-  { id: 'cozy', label: '🔥 Затишок (Темна)', group: 'dark' },
+  { id: 'cozy', label: '🏡 Затишок (Темна)', group: 'dark' },
   { id: 'mono-light', label: '📄 Ч/Б Папір E-Ink', group: 'mono' },
   { id: 'mono-dark', label: '🖤 Ч/Б Графіт OLED', group: 'mono' },
 ];

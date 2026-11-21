@@ -7,7 +7,7 @@ const THEME_GLYPHS: Record<ThemeMode, { icon: string; short: string }> = {
   nordic: { icon: '❄', short: 'Сканди' },
   lavender: { icon: '🪻', short: 'Лаванда' },
   focus: { icon: '🌙', short: 'Фокус' },
-  cozy: { icon: '🕯', short: 'Затишок' },
+  cozy: { icon: '🏡', short: 'Затишок' },
   'mono-light': { icon: '◐', short: 'Ч/Б Світла' },
   'mono-dark': { icon: '◑', short: 'Ч/Б Темна' },
 };
